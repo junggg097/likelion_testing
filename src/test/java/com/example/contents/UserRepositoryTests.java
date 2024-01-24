@@ -1,9 +1,12 @@
 package com.example.contents;
 
 import com.example.contents.entity.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,9 +57,24 @@ public class UserRepositoryTests {
     }
 
     // 사용자를 조회하는 테스트
+    // 사용자를 조회하는 테스트
     @Test
+    @DisplayName("username으로 존재하는 사용자 조회")
     public void testReadUser() {
         // given
-        // 내가 읽고자 하는 User가 데이터베이스에 존재하는 상황에서
+        // 내가 읽고자 하는 특정 username의 User가 데이터베이스에 저장된 이후의 상황에서
+        String username = "edujeeho";
+        User userGiven = new User(username, null, null, null);
+        userRepository.save(userGiven);
+
+        // when
+        // 해당하는 username 가지고 userRepository.findByUsername(username);의 결과를 받아오면
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        // then
+        // 돌아온 결과 Optional.isPresent() == true이고, (assertTrue)
+        assertTrue(optionalUser.isPresent());
+        // 돌아온 결과 Optional.get().getUsername == username이다.
+        assertEquals(username, optionalUser.get().getUsername());
     }
 }
