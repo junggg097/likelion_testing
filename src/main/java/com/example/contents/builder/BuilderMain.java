@@ -6,7 +6,8 @@ public class BuilderMain {
         // 전체 필드를 받아 생성해주는 생성자가 있을 때,
         // username, email, firstName, lastName 만 넣어 초기화 하고 싶다면 ?
         // yujin, yujin@gmail.com, yujinm jung
-        User newUser = new User(
+
+        /*User newUser = new User(
                 null,
                 "yujin",
                 null,
@@ -36,6 +37,8 @@ public class BuilderMain {
 
         User newUser3 = c.build();
 
+
+         */
 
         User newUser4 = User.builder()
                 .id(1L)

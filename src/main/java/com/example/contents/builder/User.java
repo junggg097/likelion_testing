@@ -1,5 +1,12 @@
 package com.example.contents.builder;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@Getter
 public class User {
     private Long id;
     private String username;
@@ -10,6 +17,7 @@ public class User {
     private String lastName;
     private String status;
 
+    /*
     // User를 만들 준비를 하는 Builder 클래스
     public static class UserBuilder {
         private Long id;
@@ -59,6 +67,8 @@ public class User {
 
     public User() {}
 
+
+     */
     public User(Long id, String username, String password, String email, String phone, String firstName, String lastName, String status) {
         this.id = id;
         this.username = username;
@@ -73,6 +83,8 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 
     public void setUsername(String username) {
         this.username = username;
